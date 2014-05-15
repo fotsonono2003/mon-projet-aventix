@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://lang.java" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://lang.java" xmlns:intf="http://lang.java" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+   <wsdl:portType name="Object">
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ObjectSoapBinding" type="impl:Object">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ObjectService">
+
+      <wsdl:port binding="impl:ObjectSoapBinding" name="Object">
+
+         <wsdlsoap:address location="http://localhost:8080/Aventix/services/Object"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

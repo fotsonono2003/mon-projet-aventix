@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 00:03:05 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="modele.Administrateur" table="administrateur" catalog="aventix">
+        <id name="numAdmin" type="int">
+            <column name="numAdmin" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="20" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" length="50" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="50" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

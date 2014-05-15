@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 00:03:05 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="modele.Carte" table="carte" catalog="aventix">
+        <id name="numerocarte" type="int">
+            <column name="numerocarte" />
+            <generator class="assigned" />
+        </id>
+        
+        <!--<many-to-one name="employe" class="modele.Employe" fetch="select">
+            <column name="numemploye" not-null="true" unique="true" />
+        </many-to-one> -->
+        
+        <many-to-one  class="modele.Employe" name="employe" column="numemploye"  unique="true"   not-null="true"/>        
+        
+        <property name="datecreation" type="timestamp">
+            <column name="datecreation" length="19" not-null="true" />
+        </property>
+        <property name="solde" type="float">
+            <column name="solde" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="password" type="int">
+            <column name="password" not-null="true" />
+        </property>
+        <property name="actif" type="boolean">
+            <column name="actif" not-null="true" />
+        </property>
+        <set name="transactionses" table="transactions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numerocarte" />
+            </key>
+            <one-to-many class="modele.Transactions" />
+        </set>
+    </class>
+</hibernate-mapping>

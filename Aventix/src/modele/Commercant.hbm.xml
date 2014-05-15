@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 00:03:05 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="modele.Commercant" table="commercant" catalog="aventix">
+        <id name="numcommercant" type="java.lang.Integer">
+            <column name="numcommercant" />
+            <generator class="identity" />
+        </id>
+        <property name="raisonSociale" type="string">
+            <column name="raisonSociale" length="20" not-null="true" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="20" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="adresse" length="100" />
+        </property>
+        <property name="rib" type="int">
+            <column name="rib" not-null="true" />
+        </property>
+        <property name="siret" type="string">
+            <column name="siret" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="20" not-null="true" />
+        </property>
+
+        <property name="telephone" type="string">
+            <column name="telephone" length="20" />
+        </property>
+        
+        <!--Liste de lecteurs de carte-->
+        <set name="lecteurcartes" table="lecteurcarte" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="numcommercant" />
+            </key>
+            <one-to-many class="modele.Lecteurcarte" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

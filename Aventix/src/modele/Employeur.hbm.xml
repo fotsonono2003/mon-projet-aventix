@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 00:03:05 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="modele.Employeur" table="employeur" catalog="aventix">
+        <id name="numemployeur" type="java.lang.Integer">
+            <column name="numemployeur" />
+            <generator class="identity" />
+        </id>
+        <property name="raisonsocial" type="string">
+            <column name="raisonsocial" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="adresse" length="50" />
+        </property>
+        <!-- Liste d'employes -->
+        <set name="ListEmployes" table="employe" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numeployeur" />
+            </key>
+            <one-to-many class="modele.Employe" />
+        </set>
+        <!-- Liste de Commandes -->
+        <set name="commandes" table="commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numemployeur" not-null="true" />
+            </key>
+            <one-to-many class="modele.Commande" />
+        </set>
+    </class>
+</hibernate-mapping>

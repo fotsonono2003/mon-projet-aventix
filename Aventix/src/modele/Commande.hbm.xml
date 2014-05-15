@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 00:03:05 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="modele.Commande" table="commande" catalog="aventix">
+        <id name="numcommande" type="java.lang.Integer">
+            <column name="numcommande" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employeur" class="modele.Employeur" fetch="select">
+            <column name="numemployeur" not-null="true" />
+        </many-to-one>
+        <property name="nbcarte" type="int">
+            <column name="nbcarte" not-null="true" />
+        </property>
+        <property name="datecommande" type="timestamp">
+            <column name="datecommande" length="10" not-null="true" />
+        </property>
+        
+        <one-to-one name="facture" property-ref="commande" />
+    </class>
+</hibernate-mapping>

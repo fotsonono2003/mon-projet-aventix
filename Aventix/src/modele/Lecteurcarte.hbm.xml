@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 00:03:05 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="modele.Lecteurcarte" table="lecteurcarte" catalog="aventix">
+        <id name="numlecteur" type="int">
+            <column name="numlecteur" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="commercant" class="modele.Commercant" fetch="select">
+            <column name="numcommercant" />
+        </many-to-one>
+        <set name="transactionses" table="transactions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numLecteur" />
+            </key>
+            <one-to-many class="modele.Transactions" />
+        </set>
+    </class>
+</hibernate-mapping>

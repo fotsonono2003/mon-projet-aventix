@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 00:03:05 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="modele.Employe" table="employe" catalog="aventix">
+        <id name="numemploye" type="java.lang.Integer">
+            <column name="numemploye" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employeur" class="modele.Employeur" fetch="select">
+            <column name="numeployeur" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="nom" length="50" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" length="50" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="50" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+        <property name="dateEnregistrement" type="timestamp">
+            <column name="dateEnregistrement" length="19" />
+        </property>
+        
+        <!--<set name="cartes" table="carte" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numemploye" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modele.Carte" />
+        </set> -->
+        
+        <one-to-one class="modele.Carte" name="carte" property-ref="employe"/>
+    </class>
+</hibernate-mapping>
