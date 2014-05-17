@@ -1,0 +1,58 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\SFM\Desktop\code_java\Projet_Consultation\dist\Projet_Consultation.jar</jar>
+  <outfile>C:\Users\SFM\Desktop\code_java\Projet_Consultation\dist\Projet.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon></icon>
+  <singleInstance>
+    <mutexName>ConsultationQoS</mutexName>
+    <windowTitle>ConsultationQoS: une session est déja ouvert</windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>projet_consultation.Projet_ConsultationApp</mainClass>
+    <cp>lib/appframework-1.0.3.jar</cp>
+    <cp>lib/swing-worker-1.1.jar</cp>
+    <cp>lib/postgresql-8.4-701.jdbc3.jar</cp>
+    <cp>lib/jcalendar-1.4.jar</cp>
+  </classPath>
+  <jre>
+    <path></path>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+  </jre>
+  <splash>
+    <file>C:\Users\SFM\Pictures\splash.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>40</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>1.2.0.0</fileVersion>
+    <txtFileVersion>1.1</txtFileVersion>
+    <fileDescription>QoSTracker-Apllication de consultation des parametres réseaux</fileDescription>
+    <copyright>bi4t.net-BI4T</copyright>
+    <productVersion>1.2.0.0</productVersion>
+    <txtProductVersion>1.1</txtProductVersion>
+    <productName>ConsultationQoS</productName>
+    <companyName>BI4T</companyName>
+    <internalName>QoSTracker</internalName>
+    <originalFilename>Projet.exe</originalFilename>
+  </versionInfo>
+  <messages>
+    <startupErr>Une erreur est survenue lors du lancement de l&apos;application.</startupErr>
+    <bundledJreErr>Cette application à été configurée pour utiliser un environement Java, mais l&apos;environement est inexistant ou corrompue.</bundledJreErr>
+    <jreVersionErr>Cette application requiert un environement d&apos;execution Java</jreVersionErr>
+    <launcherErr>Le registre fait reférence à un environement d&apos;execution non existant ou l&apos;environement d&apos;execution est corrompue.</launcherErr>
+    <instanceAlreadyExistsMsg>Une instance de votre application est dejà en cours.</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>

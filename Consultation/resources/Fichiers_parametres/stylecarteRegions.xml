@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>MAU</Name>
+    <UserStyle>
+      <Title>SLD Cook Book: Attribute-based polygon</Title>
+      <FeatureTypeStyle>
+        <Rule>
+          <Name>zonepermise</Name>
+          <Title>Less Than 1</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsLessThan>
+              <ogc:PropertyName>tchcrbh</ogc:PropertyName>
+              <ogc:Literal>0.02</ogc:Literal>
+            </ogc:PropertyIsLessThan>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#BCFF57</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#FFFFFF</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+          <!--************************************************Debut lignes ajoutées*******************************************************-->
+          <TextSymbolizer>
+            <Label>
+              <ogc:PropertyName>region</ogc:PropertyName>
+            </Label>
+            <Font>
+              <!-- <CssParameter name="font-family">Arial</CssParameter> -->
+              <CssParameter name="font-size">12</CssParameter>
+            </Font>
+            <!-- <Halo>
+              <Radius>3</Radius> -->
+            <Fill>
+              <CssParameter name="fill">#000000</CssParameter>
+            </Fill>
+            <!-- </Halo> -->
+          </TextSymbolizer>
+          <!--************************************************Fin lignes ajoutées*******************************************************-->
+        </Rule>
+        <Rule>
+          <Name>zonecritique</Name>
+          <Title>1to2</Title>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThanOrEqualTo>
+                <ogc:PropertyName>tchcrbh</ogc:PropertyName>
+                <ogc:Literal>0.02</ogc:Literal>
+              </ogc:PropertyIsGreaterThanOrEqualTo>
+              <ogc:PropertyIsLessThan>
+                <ogc:PropertyName>tchcrbh</ogc:PropertyName>
+                <ogc:Literal>0.05</ogc:Literal>
+              </ogc:PropertyIsLessThan>
+            </ogc:And>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FF6600</CssParameter>
+              <!--couleur orange FF6600-->
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#FFFFFF</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+          <!--************************************************Debut lignes ajoutée*******************************************************-->
+          <TextSymbolizer>
+            <Label>
+              <ogc:PropertyName>region</ogc:PropertyName>
+            </Label>
+            <Font>
+              <!-- <CssParameter name="font-family">Arial</CssParameter> -->
+              <CssParameter name="font-size">12</CssParameter>
+            </Font>
+            <!--  <Halo>
+              <Radius>3</Radius> -->
+            <Fill>
+              <CssParameter name="fill">#000000</CssParameter>
+            </Fill>
+            <!--    </Halo> -->
+          </TextSymbolizer>
+          <!--************************************************Fin lignes ajoutée*******************************************************-->
+        </Rule>
+        <Rule>
+          <Name>zone interdite</Name>
+          <Title>Greater Than 2</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsGreaterThanOrEqualTo>
+              <ogc:PropertyName>tchcrbh</ogc:PropertyName>
+              <ogc:Literal>0.05</ogc:Literal>
+            </ogc:PropertyIsGreaterThanOrEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FF5768</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#FFFFFF</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+          <!--************************************************Debut lignes ajoutée*******************************************************-->
+          <TextSymbolizer>
+            <Label>
+              <ogc:PropertyName>region</ogc:PropertyName>
+            </Label>
+            <Font>
+              <!-- <CssParameter name="font-family">Arial</CssParameter> -->
+              <CssParameter name="font-size">12</CssParameter>
+            </Font>
+            <!-- <Halo>
+             <Radius>3</Radius> -->
+            <Fill>
+              <CssParameter name="fill">#000000</CssParameter>
+            </Fill>
+            <!-- </Halo>  -->
+          </TextSymbolizer>
+          <!--************************************************Fin lignes ajoutée*******************************************************-->
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+

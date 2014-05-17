@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="synthese_bts"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="782"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="AllSectionsNoDetail"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<style 
+		name="styleTCHAV"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{tchav}).floatValue()<Float.valueOf($P{stchav}).floatValue())]]></conditionExpression>
+			<style 
+				name="styletchav"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+	<style 
+		name="styleTCHDRBH"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{tchdrbh}).floatValue()>Float.valueOf($P{stchdrbh}).floatValue())]]></conditionExpression>
+			<style 
+				name="styleTchdrbh"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+	<style 
+		name="styleTCHCRBH"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{tchcrbh}).floatValue()>Float.valueOf($P{stchcrbh}).floatValue())]]></conditionExpression>
+			<style 
+				name="styleTCHCRBH"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+	<style 
+		name="styleSDCCHCRBH"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{sdcchcrbh}).floatValue()>Float.valueOf($P{ssdcchcrbh}).floatValue())]]></conditionExpression>
+			<style 
+				name="styleSDCCHCRBH"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+	<style 
+		name="styleSDCCHDRBH"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{sdcchdrbh}).floatValue()>Float.valueOf($P{ssdcchdrbh}).floatValue())]]></conditionExpression>
+			<style 
+				name="styleSDCCHDRBH"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+	<style 
+		name="styleCSRBH"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{csrbh}).floatValue()<Float.valueOf($P{scsrbh}).floatValue())]]></conditionExpression>
+			<style 
+				name="styleCSRBH"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+	<style 
+		name="styleCDRBH"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{cdrbh}).floatValue()>Float.valueOf($P{scdrbh}).floatValue())]]></conditionExpression>
+			<style 
+				name="styleCDRBH"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+	<style 
+		name="styleHOFAILUREBH"
+		isDefault="false"
+		mode="Opaque"
+		fontSize="12"
+	>
+
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($F{hofailurebh}).floatValue()>Float.valueOf($P{shofailurebh}).floatValue())]]></conditionExpression>
+			<style 
+				name="styleHOFAILUREBH"
+				isDefault="false"
+				mode="Opaque"
+				backcolor="#FF0000"
+				fontSize="12"
+				isBold="true"
+			/>
+		</conditionalStyle>
+	</style>
+
+	<parameter name="cheminImage" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="logo_operateur" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="logo_regulateur" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="dateDebut" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="dateFin" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="operateur" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="stchav" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="stchcrbh" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="stchdrbh" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="ssdcchcrbh" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="ssdcchdrbh" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="scsrbh" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="scdrbh" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="shofailurebh" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="requete" isForPrompting="false" class="java.lang.String"/>
+
+	<field name="cell_name" class="java.lang.String"/>
+	<field name="tchav" class="java.lang.Float"/>
+	<field name="tchcrbh" class="java.lang.Float"/>
+	<field name="tchdrbh" class="java.lang.Float"/>
+	<field name="sdcchcrbh" class="java.lang.Float"/>
+	<field name="sdcchdrbh" class="java.lang.Float"/>
+	<field name="csrbh" class="java.lang.Float"/>
+	<field name="cdrbh" class="java.lang.Float"/>
+	<field name="hofailurebh" class="java.lang.Float"/>
+	<field name="region" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="50"  isSplitAllowed="true" >
+				<rectangle radius="10" >
+					<reportElement
+						x="0"
+						y="0"
+						width="782"
+						height="50"
+						forecolor="#24445C"
+						backcolor="#24445C"
+						key="rectangle-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="249"
+						y="26"
+						width="297"
+						height="21"
+						forecolor="#FFCC33"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="false" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Période du  "+$P{dateDebut}+"  au  "+$P{dateFin}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="257"
+						y="0"
+						width="295"
+						height="25"
+						forecolor="#FFCC33"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Rapport QoS "+$P{operateur}]]></textFieldExpression>
+				</textField>
+				<rectangle radius="10" >
+					<reportElement
+						x="0"
+						y="0"
+						width="73"
+						height="50"
+						key="rectangle-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="3"
+						y="4"
+						width="65"
+						height="42"
+						key="image-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA[$P{logo_regulateur}]]></imageExpression>
+				</image>
+				<rectangle radius="10" >
+					<reportElement
+						x="709"
+						y="0"
+						width="73"
+						height="50"
+						key="rectangle-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<image  vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="715"
+						y="2"
+						width="62"
+						height="44"
+						key="image-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA[$P{logo_operateur}]]></imageExpression>
+				</image>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="68"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="4"
+						width="782"
+						height="30"
+						forecolor="#691B1B"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-BoldOblique" size="18" isBold="true" isItalic="true" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[Synthèse des Cellules]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="35"
+						width="89"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-1"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Région(s)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="173"
+						y="35"
+						width="76"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-2"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[TCHAV]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="89"
+						y="35"
+						width="83"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-3"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Cellule(s)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="249"
+						y="35"
+						width="74"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-4"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[TCHCRBH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="323"
+						y="35"
+						width="70"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-5"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[TCHDRBH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="393"
+						y="35"
+						width="90"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-6"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[SDCCHCRBH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="483"
+						y="35"
+						width="87"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-7"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[SDCCHDRBH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="570"
+						y="35"
+						width="62"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-8"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[CSRBH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="632"
+						y="35"
+						width="62"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-9"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[CDRBH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="694"
+						y="35"
+						width="88"
+						height="32"
+						forecolor="#CC6600"
+						backcolor="#EEEEEE"
+						key="element-10"/>
+					<box topBorder="2Point" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="" pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="false" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[HOFAILUREBH]]></text>
+				</staticText>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="21"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="1"
+						width="89"
+						height="19"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{region}.trim()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleTCHAV"
+						x="173"
+						y="1"
+						width="76"
+						height="19"
+						key="textField-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{tchav}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleTCHCRBH"
+						x="249"
+						y="1"
+						width="74"
+						height="19"
+						key="textField-7"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{tchcrbh}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleTCHDRBH"
+						x="323"
+						y="1"
+						width="70"
+						height="19"
+						key="textField-8"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{tchdrbh}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleSDCCHCRBH"
+						x="393"
+						y="1"
+						width="90"
+						height="19"
+						key="textField-9"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{sdcchcrbh}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleSDCCHDRBH"
+						x="483"
+						y="1"
+						width="87"
+						height="19"
+						key="textField-10"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{sdcchdrbh}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleCSRBH"
+						x="570"
+						y="1"
+						width="62"
+						height="19"
+						key="textField-11"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{csrbh}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleCDRBH"
+						x="632"
+						y="1"
+						width="62"
+						height="19"
+						key="textField-12"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{cdrbh}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						style="styleHOFAILUREBH"
+						x="694"
+						y="1"
+						width="88"
+						height="19"
+						key="textField-13"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Float"><![CDATA[new java.lang.Float(($F{hofailurebh}.floatValue())*100)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="89"
+						y="1"
+						width="84"
+						height="19"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField-14"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="2Point" leftBorderColor="#000000" leftPadding="2" rightBorder="2Point" rightBorderColor="#000000" rightPadding="2" bottomBorder="2Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times-Roman" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{cell_name}.trim()]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="30"  isSplitAllowed="true" >
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="2"
+						width="782"
+						height="0"
+						forecolor="#000000"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch" pen="2Point"/>
+				</line>
+				<textField isStretchWithOverflow="false" pattern="dd-MMM-yyyy" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="2"
+						width="100"
+						height="20"
+						key="textField-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
