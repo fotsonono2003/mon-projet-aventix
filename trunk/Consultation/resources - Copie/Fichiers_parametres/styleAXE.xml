@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>Attribute-based point</Name>
+    <UserStyle>
+      <Title>GeoServer SLD Cook Book: Attribute-based point</Title>
+      <FeatureTypeStyle>
+        <Rule>
+          <Name>ruleinf</Name>
+          <Title>1 to 5</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsLessThan>
+              <ogc:PropertyName>smslr</ogc:PropertyName>
+              <ogc:Literal>0.02</ogc:Literal>
+              <!--<ogc:Literal>4.0</ogc:Literal>-->
+            </ogc:PropertyIsLessThan>
+          </ogc:Filter>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCFF57</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+              <!--   <CssParameter name="stroke-dasharray">5 2</CssParameter> -->
+            </Stroke>
+          </LineSymbolizer>
+          <TextSymbolizer>
+            <Label>
+              <ogc:PropertyName>axe</ogc:PropertyName>
+            </Label>
+            <Font>
+              <!--CssParameter name="font-family">Arial</CssParameter-->
+              <CssParameter name="font-size">9</CssParameter>
+              <CssParameter name="font-style">normal</CssParameter>
+              <CssParameter name="font-weight">bold</CssParameter>
+            </Font>
+            <LabelPlacement>
+              <PointPlacement>
+                <AnchorPoint>
+                  <AnchorPointX>0.5</AnchorPointX>
+                  <AnchorPointY>0.0</AnchorPointY>
+                </AnchorPoint>
+                <Displacement>
+                  <DisplacementX>0</DisplacementX>
+                  <DisplacementY>5</DisplacementY>
+                </Displacement>
+              </PointPlacement>
+            </LabelPlacement>
+            <Fill>
+              <CssParameter name="fill">#000000</CssParameter>
+            </Fill>
+          </TextSymbolizer>
+        </Rule>
+        <Rule>
+          <Name>Mediumrule</Name>
+          <Title>5 to 10</Title>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThanOrEqualTo>
+                <ogc:PropertyName>smslr</ogc:PropertyName>
+                <ogc:Literal>0.02</ogc:Literal>
+                <!--<ogc:Literal>4.0</ogc:Literal>-->
+              </ogc:PropertyIsGreaterThanOrEqualTo>
+              <ogc:PropertyIsLessThan>
+                <ogc:PropertyName>smslr</ogc:PropertyName>
+                <ogc:Literal>0.05</ogc:Literal>
+                <!--<ogc:Literal>12.0</ogc:Literal>-->
+              </ogc:PropertyIsLessThan>
+            </ogc:And>
+          </ogc:Filter>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FF6600</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+              <!--<CssParameter name="stroke-dasharray">5 2</CssParameter> -->
+            </Stroke>
+          </LineSymbolizer>
+          <TextSymbolizer>
+            <Label>
+              <ogc:PropertyName>axe</ogc:PropertyName>
+            </Label>
+            <Font>
+              <!--CssParameter name="font-family">Arial</CssParameter-->
+              <CssParameter name="font-size">9</CssParameter>
+              <CssParameter name="font-style">normal</CssParameter>
+              <CssParameter name="font-weight">bold</CssParameter>
+            </Font>
+            <LabelPlacement>
+              <PointPlacement>
+                <AnchorPoint>
+                  <AnchorPointX>0.5</AnchorPointX>
+                  <AnchorPointY>0.0</AnchorPointY>
+                </AnchorPoint>
+                <Displacement>
+                  <DisplacementX>0</DisplacementX>
+                  <DisplacementY>5</DisplacementY>
+                </Displacement>
+              </PointPlacement>
+            </LabelPlacement>
+            <Fill>
+              <CssParameter name="fill">#000000</CssParameter>
+            </Fill>
+          </TextSymbolizer>
+        </Rule>
+        <Rule>
+          <Name>suprule</Name>
+          <Title>Greater than 10</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsGreaterThanOrEqualTo>
+              <ogc:PropertyName>smslr</ogc:PropertyName>
+              <ogc:Literal>0.05</ogc:Literal>
+              <!--<ogc:Literal>12.0</ogc:Literal>-->
+            </ogc:PropertyIsGreaterThanOrEqualTo>
+          </ogc:Filter>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FF5768</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+              <!-- <CssParameter name="stroke-dasharray">5 2</CssParameter> -->
+            </Stroke>
+          </LineSymbolizer>
+          <TextSymbolizer>
+            <Label>
+              <ogc:PropertyName>axe</ogc:PropertyName>
+            </Label>
+            <Font>
+              <!--CssParameter name="font-family">Arial</CssParameter-->
+              <CssParameter name="font-size">9</CssParameter>
+              <CssParameter name="font-style">normal</CssParameter>
+              <CssParameter name="font-weight">bold</CssParameter>
+            </Font>
+            <LabelPlacement>
+              <PointPlacement>
+                <AnchorPoint>
+                  <AnchorPointX>0.5</AnchorPointX>
+                  <AnchorPointY>0.0</AnchorPointY>
+                </AnchorPoint>
+                <Displacement>
+                  <DisplacementX>0</DisplacementX>
+                  <DisplacementY>5</DisplacementY>
+                </Displacement>
+              </PointPlacement>
+            </LabelPlacement>
+            <Fill>
+              <CssParameter name="fill">#000000</CssParameter>
+            </Fill>
+          </TextSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+

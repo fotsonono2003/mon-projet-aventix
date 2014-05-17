@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parametres>
+  <param>
+    <login>admin</login>
+    <password>bi4t</password>
+    <adresseIP>192.168.1.3</adresseIP>
+    <pilote>org.postgresql.Driver</pilote>
+    <port>5432</port>
+    <bdd>bddgenerale</bdd>
+  </param>
+</parametres>
+
+
